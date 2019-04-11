@@ -62,7 +62,7 @@ std::string FBullCowGame::GetAndPrintGuess(int num)
 	std::string guess;
 	std::cout << "Enter your guess: ";
 	getline(std::cin, guess);
-	std::cout << "Your guess " << num << " was: " << guess << "\n\n";
+	std::cout << "Your guess " << num << " was: " << guess << "\n";
 	return guess;
 }
 
@@ -93,7 +93,7 @@ bool FBullCowGame::InterpretGuess(std::string guess, std::string wordToGuess)
 	}
 	else 
 	{
-		std::cout << "You have " << bulls << " bulls and " << cows << " cows.\n";
+		std::cout << "You have " << bulls << " bulls and " << cows << " cows.\n\n";
 		return false;
 	}
 

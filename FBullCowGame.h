@@ -2,25 +2,26 @@
 #include <string>
 #include <list> 
 #include <iterator> 
+#include <vector>
 
 class FBullCowGame
 {
 public:
-	FBullCowGame(int wordLength, int maxTries);
+	FBullCowGame();
 	void PrintIntro();
-	void SelectDifficulty();
 	void PlayGame();
 
 private:
 	int wordLength;
 	int maxTries;
 	std::string wordToGuess;
-	std::string words[5] = {"slope", "heat", "game", "saint", "tech"};
+	std::vector<std::string> words;
 
 	bool InterpretGuess(std::string guess, std::string wordToGuess);
 	bool ContinuePlaying();
 	bool validGuess(std::string);
 	std::string GetAndPrintGuess(int num);
+	void SelectDifficulty();
 }	
 ;
 

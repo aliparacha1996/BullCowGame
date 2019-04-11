@@ -18,6 +18,11 @@ Words* Words::singletonInstance = NULL;
 	return singletonInstance;
 }
 
+ std::vector<std::string> Words::getWords(std::string level)
+ {
+	 return mapOfWords.at(level);
+ }
+
 Words::Words()
 {
 	std::string line;

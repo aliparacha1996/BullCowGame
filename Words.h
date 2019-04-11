@@ -8,7 +8,7 @@ class Words
 
 public:
 	static Words *getInstance();
-	std::vector<std::string> getWords();
+	std::vector<std::string> getWords(std::string level);
 
 private:
 	Words();

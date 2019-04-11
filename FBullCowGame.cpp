@@ -10,11 +10,8 @@
 
 const int ASCII_FOR_LOWERCASE_A = 97;
 
-FBullCowGame::FBullCowGame(int wordLength, int maxTries)
+FBullCowGame::FBullCowGame()
 {
-	this->wordLength = wordLength;
-	this->maxTries = maxTries;
-	Words::getInstance();
 }
 
 //Introduction to the game
@@ -33,21 +30,27 @@ void FBullCowGame::SelectDifficulty()
 		getline(std::cin, difficulty);
 
 		if (difficulty.length() > 1 || (difficulty[0] != '1' && difficulty[0] != '2' && difficulty[0] != '3'))
-			std::cout << "Please select a valid difficulty.\n";
+			std::cout << "Please select a valid difficulty level.\n";
 		else {
 			validDifficultySelected = true;
-			//words = Words::getInstance()->getWords();
-
+			srand(time(NULL));
+			std::string num;
 			switch (difficulty[0])
 			{
 				case '1':
+					num = rand() % 2 == 0 ? "4" : "5";
+					this->maxTries = 7;
 					break;
 				case '2':
+					num = rand() % 2 == 0 ? "6" : "7";
+					this->maxTries = 10;
 					break;
 				default:
+					num = rand() % 2 == 0 ? "8" : "9";
+					this->maxTries = 15;
 					break;
 			}
-
+			words = Words::getInstance()->getWords(num);
 		}
 
 	} while (!validDifficultySelected);
@@ -143,28 +146,39 @@ void FBullCowGame::PlayGame()
 	bool correctGuess;
 	int i;
 
-	do {
-		srand(time(NULL));
-		this->wordToGuess = words[rand() % words->length()];
-		std::cout << "Can you guess the " << this->wordToGuess.length() << " letter isogram?\n\n";
+	try {
+		do {
+			SelectDifficulty();
+			srand(time(NULL));
+			this->wordToGuess = words[(rand() % words.size() - 1) + 1];
+			std::cout << "\nCan you guess the " << this->wordToGuess.length() << " letter isogram in " << maxTries << " tries?\n\n";
 
-		for (i = 0; i < this->maxTries; i++)
-		{
-			guess = GetAndPrintGuess(i + 1);			
-			std::transform(guess.begin(), guess.end(), guess.begin(), ::tolower);
-		
-			if (validGuess(guess))
+			for (i = 0; i < this->maxTries; i++)
 			{
-				correctGuess = InterpretGuess(guess, this->wordToGuess);
-				if (correctGuess)
-					break;
-			}
-			else i--;
-		}
+				guess = GetAndPrintGuess(i + 1);
+				std::transform(guess.begin(), guess.end(), guess.begin(), ::tolower);
 
-		if (i == this->maxTries)
-			std::cout << "\nSorry you are out of tries. The isogram was: " << wordToGuess << "\n";
-	
-	} while (ContinuePlaying());
+				if (validGuess(guess))
+				{
+					correctGuess = InterpretGuess(guess, this->wordToGuess);
+					if (correctGuess)
+						break;
+				}
+				else i--;
+			}
+
+			if (i == this->maxTries)
+			{
+				std::cout << "\nSorry you are out of tries. The isogram was: " << wordToGuess << "\n";
+				std::cout << "Visit the following link to get a definition of the word: https://www.morewords.com/word/" <<
+					wordToGuess << "/\n\n";
+			}
+
+		} while (ContinuePlaying());
+	}
+	catch (const std::exception& e)
+	{
+		throw e;
+	}
 }
 

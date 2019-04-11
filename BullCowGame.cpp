@@ -10,11 +10,16 @@
 
 int main()
 {
-	FBullCowGame bcg(5,5);
-	bcg.PrintIntro();
-	bcg.SelectDifficulty();
-	bcg.PlayGame();
-	return 0;
+	try {
+		FBullCowGame bcg;
+		bcg.PrintIntro();
+		bcg.PlayGame();
+		return 0;
+	}
+	catch (const std::exception& e)
+	{
+		return 0;
+	}
 }
 
 

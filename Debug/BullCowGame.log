@@ -1,6 +1,8 @@
-﻿  FBullCowGame.cpp
-c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(70): warning C4018: '<': signed/unsigned mismatch
-c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(73): warning C4018: '<': signed/unsigned mismatch
-c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(124): warning C4018: '<': signed/unsigned mismatch
-c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(144): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+﻿  BullCowGame.cpp
+  FBullCowGame.cpp
+c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(72): warning C4018: '<': signed/unsigned mismatch
+c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(75): warning C4018: '<': signed/unsigned mismatch
+c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(126): warning C4018: '<': signed/unsigned mismatch
+c:\users\paracha\source\repos\bullcowgame\bullcowgame\fbullcowgame.cpp(146): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
   BullCowGame.vcxproj -> C:\Users\Paracha\source\repos\BullCowGame\Debug\BullCowGame.exe

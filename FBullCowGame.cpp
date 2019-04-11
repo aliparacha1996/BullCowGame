@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+#include "Words.h"
 
 const int ASCII_FOR_LOWERCASE_A = 97;
 
@@ -13,6 +14,7 @@ FBullCowGame::FBullCowGame(int wordLength, int maxTries)
 {
 	this->wordLength = wordLength;
 	this->maxTries = maxTries;
+	Words::getInstance();
 }
 
 //Introduction to the game
@@ -34,6 +36,7 @@ void FBullCowGame::SelectDifficulty()
 			std::cout << "Please select a valid difficulty.\n";
 		else {
 			validDifficultySelected = true;
+			//words = Words::getInstance()->getWords();
 
 			switch (difficulty[0])
 			{

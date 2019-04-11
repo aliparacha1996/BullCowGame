@@ -15,7 +15,7 @@ private:
 	int wordLength;
 	int maxTries;
 	std::string wordToGuess;
-	std::string words[5] = {"slope", "heat", "game", "saint", "tech" };
+	std::string words[5] = {"slope", "heat", "game", "saint", "tech"};
 
 	bool InterpretGuess(std::string guess, std::string wordToGuess);
 	bool ContinuePlaying();
